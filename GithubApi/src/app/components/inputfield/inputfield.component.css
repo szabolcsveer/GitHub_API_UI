@@ -1,0 +1,15 @@
+.main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 10%;
+  padding-left: 50%;
+}
+
+mat-form-field {
+  width: 14rem;
+}
+
+button {
+  width: 5rem;
+}
