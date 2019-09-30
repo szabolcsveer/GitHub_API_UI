@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-inputfield',
@@ -7,14 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputfieldComponent implements OnInit {
 
-  user: string;
+  public user: string;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) {
+    
+   }
 
   ngOnInit() {
+    this.route.queryParamMap.subscribe(params => {
+     console.log(params);
+    });
   }
 
   onKey(event: KeyboardEvent) { // with type info
     this.user = (<HTMLInputElement>event.target).value;
+  }
+
+  onClickMe(event) {
+    this.user = event.target.value;
+  }
+
+  goTo() {
+    this.router.navigate(['/input'], { queryParams: { user: this.user } });
   }
 }
