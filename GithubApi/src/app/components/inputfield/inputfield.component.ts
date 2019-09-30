@@ -29,6 +29,6 @@ export class InputfieldComponent implements OnInit {
   }
 
   goTo() {
-    this.router.navigate(['/input'], { queryParams: { user: this.user } });
+    this.router.navigate(['/'], { queryParams: { user: this.user } });
   }
 }
