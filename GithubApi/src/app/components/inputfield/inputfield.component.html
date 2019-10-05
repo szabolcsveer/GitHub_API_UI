@@ -2,7 +2,7 @@
   <mat-form-field class="main-input">
     <input (keyup)="onKey($event)" matInput placeholder="Empty List" >
   </mat-form-field>
-  <button (click)="goTo()" mat-stroked-button>
+  <button (click)="goTo()" (click)="showDataFromApi()" mat-stroked-button>
     SEARCH 
   </button>
 </div>
