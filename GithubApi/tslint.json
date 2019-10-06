@@ -88,5 +88,12 @@
   },
   "rulesDirectory": [
     "codelyzer"
-  ]
+  ],
+  "compilerOptions": {
+    "lib": [
+      "es2017",
+      "dom",
+      "esnext.asynciterable"
+    ]
+  }
 }
