@@ -1,9 +1,9 @@
 .main {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
-  padding-top: 10%;
-  padding-left: 50%;
+  padding-top: 2%;
+  padding-left: 2%;
 }
 
 mat-form-field {
@@ -11,6 +11,6 @@ mat-form-field {
 }
 
 button {
-  width: 5rem;
+  width: 6rem;
   height: 3rem;
 }

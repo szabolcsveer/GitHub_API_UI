@@ -15,6 +15,7 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 //Angular Material
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
 
 //Components
 import { InputfieldComponent } from './components/inputfield/inputfield.component';
@@ -40,7 +41,8 @@ import { ApolloLink } from 'apollo-link';
     HttpClientModule,
     HttpClientModule, 
     ApolloModule,
-    HttpLinkModule
+    HttpLinkModule,
+    MatListModule
   ],
   bootstrap: [AppComponent],
   providers: [InputfieldComponent]

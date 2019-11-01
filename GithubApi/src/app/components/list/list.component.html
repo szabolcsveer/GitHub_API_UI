@@ -1,7 +1,24 @@
-<div *ngFor="let data of user">
-    <a href="">
-      {{data.node.name}}
-    </a>
-    {{data.node.isFork}}
-    {{data.node.pullRequests.totalCount}}
-  </div>
+<div>
+  <mat-list>
+    <mat-list-item *ngFor="let data of user">
+      <h3 matLine>
+        {{data.node.name}}
+      </h3>
+      <p matLine>
+        {{data.node.isFork}}
+      </p>
+      <p matLine>
+        {{data.node.pullRequests.totalCount}}
+      </p>
+      <p matLine>
+        {{data.node.shortDescriptionHTML}}
+      </p>
+      <p matLine>
+        {{data.node.issues.totalCount}}
+      </p>
+      <p matLine>
+        {{data.node.defaultBranchRef.target.committedDate}}
+      </p>
+    </mat-list-item>
+  </mat-list>
+</div>
