@@ -44,12 +44,11 @@ export class ListComponent implements OnInit {
       // }
     }).valueChanges
       .subscribe(({ data }) => {
-        
-        
       });
+      console.log(this.user);
   }
 
   fetchData() {
-
+    this.inputfield.userData = this.user
   }
 }

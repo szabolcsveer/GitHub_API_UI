@@ -81,7 +81,7 @@ export class InputfieldComponent implements OnInit {
       .subscribe((result) => {
       console.log(result.data.search.edges[0].node.name)
       console.log(this.userData);
-      this.userData = result.data.search.repositoryCount
+      this.userData = result.data.search.edges
       });
   }
 

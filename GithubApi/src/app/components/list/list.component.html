@@ -1,3 +1,7 @@
-<div *ngIf="">
-
-</div>
+<div *ngFor="let data of user">
+    <a href="">
+      {{data.node.name}}
+    </a>
+    {{data.node.isFork}}
+    {{data.node.pullRequests.totalCount}}
+  </div>
