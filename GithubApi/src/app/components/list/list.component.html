@@ -5,7 +5,10 @@
     </mat-list-item> 
     <mat-list-item *ngFor="let data of user">
       <h3 matLine>
-        {{data.node.name}}
+        Repository name: 
+        <a target="_blank" href={{data.node.url}}>
+         {{data.node.name}}
+        </a>
       </h3>
       <p matLine>
         {{data.node.isFork}}
@@ -19,9 +22,9 @@
       <p matLine>
         {{data.node.issues.totalCount}}
       </p>
-      <!-- <p matLine>
+      <p matLine>
         {{data.node.defaultBranchRef.target.committedDate}}
-      </p> -->
+      </p>
     </mat-list-item>
   </mat-list>
 </div>
