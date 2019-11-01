@@ -36,7 +36,6 @@ export class ListComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(this.user);
     this.querySubscription = this.apollo.watchQuery<Query>({
       query: CurrentUserForProfile,
       // variables: {
@@ -45,7 +44,6 @@ export class ListComponent implements OnInit {
     }).valueChanges
       .subscribe(({ data }) => {
       });
-      console.log(this.user);
   }
 
   fetchData() {

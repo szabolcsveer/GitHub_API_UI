@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { Subscription } from 'rxjs';
 import gql from 'graphql-tag';
+import { type } from 'os';
 
 const CurrentUserForProfile = gql`
 query ($queryString: String!) {
@@ -34,11 +35,15 @@ query ($queryString: String!) {
 }
 `;
 
-interface githubItems{
+type UserSearch = {
+  repositoryCount: number;
+  edges: UserSearch[]
+  node: string
   name: string
-  shortDesc: string
-  isFork: boolean
-  pullRequests: number
+}
+
+type Response = {
+  search: UserSearch
 }
 @Component({
   selector: 'app-inputfield',
@@ -59,7 +64,6 @@ export class InputfieldComponent implements OnInit {
   ngOnInit() {
     this.route.queryParamMap.subscribe(params => {
     });
-    console.log(this.userData);
   }
   
   onKey(event: KeyboardEvent) { // with type info
@@ -72,15 +76,13 @@ export class InputfieldComponent implements OnInit {
   
   goTo() {
     this.router.navigate(['/'], { queryParams: { user: this.user } });
-    this.querySubscription = this.apollo.watchQuery<Query>({
+    this.querySubscription = this.apollo.watchQuery<Response>({
       query: CurrentUserForProfile,
       variables: {
         queryString: this.user
       }
     }).valueChanges
       .subscribe((result) => {
-      console.log(result.data.search.edges[0].node.name)
-      console.log(this.userData);
       this.userData = result.data.search.edges
       });
   }
