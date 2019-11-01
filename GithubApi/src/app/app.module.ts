@@ -5,10 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { ApolloModule, Apollo } from "apollo-angular";
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { HttpLinkModule, HttpLink } from "apollo-angular-link-http";
+import { ApolloModule, APOLLO_OPTIONS, Apollo } from "apollo-angular";
 import { InMemoryCache } from "apollo-cache-inmemory";
+
 
 
 //Angular Material
@@ -18,12 +19,16 @@ import { MatButtonModule } from '@angular/material/button';
 //Components
 import { InputfieldComponent } from './components/inputfield/inputfield.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ListComponent } from './components/list/list.component';
+import { ApolloLink } from 'apollo-link';
+// import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     InputfieldComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -33,24 +38,14 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     MatButtonModule,
     RouterModule,
     HttpClientModule,
+    HttpClientModule, 
     ApolloModule,
-    Apollo,
-    HttpLinkModule,
-    HttpLink,
-    InMemoryCache
+    HttpLinkModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [InputfieldComponent]
 })
 export class AppModule {
-  constructor(
-    apollo: Apollo,
-    httpLink: HttpLink
-  ) {
-    apollo.create({
-      link: httpLink.create({uri:'https://api.github.com/graphql'}),
-      cache: new InMemoryCache()
-    })
-  }
+ 
 }
 
