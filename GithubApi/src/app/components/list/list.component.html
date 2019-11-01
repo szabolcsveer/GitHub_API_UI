@@ -1,5 +1,8 @@
 <div>
   <mat-list>
+    <mat-list-item>
+      {{error}}
+    </mat-list-item> 
     <mat-list-item *ngFor="let data of user">
       <h3 matLine>
         {{data.node.name}}
@@ -16,9 +19,9 @@
       <p matLine>
         {{data.node.issues.totalCount}}
       </p>
-      <p matLine>
+      <!-- <p matLine>
         {{data.node.defaultBranchRef.target.committedDate}}
-      </p>
+      </p> -->
     </mat-list-item>
   </mat-list>
 </div>

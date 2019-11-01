@@ -28,6 +28,7 @@ query{
 export class ListComponent implements OnInit {
   data: Observable<Data[]>
   @Input() user: string
+  @Input() error: string
   querySubscription: Subscription;
 
   constructor(private apollo: Apollo,

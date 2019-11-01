@@ -42,7 +42,7 @@ import { ApolloLink } from 'apollo-link';
     HttpClientModule, 
     ApolloModule,
     HttpLinkModule,
-    MatListModule
+    MatListModule,
   ],
   bootstrap: [AppComponent],
   providers: [InputfieldComponent]

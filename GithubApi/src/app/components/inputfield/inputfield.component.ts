@@ -4,16 +4,18 @@ import { Apollo } from 'apollo-angular';
 import { Subscription } from 'rxjs';
 import gql from 'graphql-tag';
 import { type } from 'os';
+import { all } from 'q';
+
 
 const CurrentUserForProfile = gql`
 query ($queryString: String!) {
-  search(query: $queryString, type: REPOSITORY, first: 20) {
-    repositoryCount
-    edges {
-      node {
-        ... on Repository {
+  repositoryOwner(login: $queryString) {
+    repositories(first: 5) {
+      edges {
+        node {
           name
           shortDescriptionHTML
+          url
           isFork
           issues {
             totalCount
@@ -36,14 +38,15 @@ query ($queryString: String!) {
 `;
 
 type UserSearch = {
-  repositoryCount: number;
+  repositories: UserSearch
   edges: UserSearch[]
   node: string
   name: string
+  error: string
 }
 
 type Response = {
-  search: UserSearch
+  repositoryOwner: UserSearch
 }
 @Component({
   selector: 'app-inputfield',
@@ -55,7 +58,7 @@ export class InputfieldComponent implements OnInit {
   public user: string;
   querySubscription: Subscription;
   public userData: any;
-
+  public error: any;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private apollo: Apollo ) {
@@ -64,6 +67,8 @@ export class InputfieldComponent implements OnInit {
   ngOnInit() {
     this.route.queryParamMap.subscribe(params => {
     });
+    console.log(this.userData);
+    
   }
   
   onKey(event: KeyboardEvent) { // with type info
@@ -78,12 +83,15 @@ export class InputfieldComponent implements OnInit {
     this.router.navigate(['/'], { queryParams: { user: this.user } });
     this.querySubscription = this.apollo.watchQuery<Response>({
       query: CurrentUserForProfile,
+      errorPolicy: 'all',
       variables: {
         queryString: this.user
       }
     }).valueChanges
       .subscribe((result) => {
-      this.userData = result.data.search.edges
+      this.userData = result.data.repositoryOwner.repositories.edges
+      console.log(result.data.repositoryOwner.repositories);
+      this.error = result.errors
       });
   }
 

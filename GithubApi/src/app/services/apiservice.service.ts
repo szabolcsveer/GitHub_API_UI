@@ -27,7 +27,7 @@ export class ApiserviceService {
 
     apollo.create({
       link: concat(authMiddleware, http),
-      cache: new InMemoryCache()
+      cache: new InMemoryCache(),
     });
   }
 }
