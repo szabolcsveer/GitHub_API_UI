@@ -1,16 +1,28 @@
 .main {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+ 
+.frame{
   display: flex;
   justify-content: flex-start;
-  flex-direction: column;
-  padding-top: 2%;
-  padding-left: 2%;
 }
 
 mat-form-field {
   width: 14rem;
+  padding: 5px 5px 5px 5px;
 }
 
 button {
   width: 6rem;
   height: 3rem;
+  /* left: 25px; */
+}
+
+h1 {
+  margin: 10px;
 }

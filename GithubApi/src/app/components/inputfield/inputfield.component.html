@@ -1,13 +1,15 @@
-<div class="main">
-  <h1>Greetings Stranger on RepoSpy</h1>
-  <mat-form-field class="main-input">
-    <input (keyup)="onKey($event)" matInput placeholder="Enter a github username" >
-  </mat-form-field>
-  <button (click)="goTo()" mat-stroked-button>
-    SEARCH 
-  </button>
+<div class="frame">
+  <div class="main">
+  <h1>Greetings Stranger</h1>
+    <mat-form-field class="main-input">
+      <input (keyup)="onKey($event)" matInput placeholder="Enter a github username">
+    </mat-form-field>
+    <button (click)="goTo()" mat-stroked-button>
+      SEARCH
+    </button>
+  </div>
 
-  <app-list [user]="userData">
+    <app-list [user]="userData">
 
-  </app-list>
+    </app-list>
 </div>

@@ -1,15 +1,15 @@
-<div>
+<div class="list-items">
   <mat-list>
     <mat-list-item>
       {{error}}
     </mat-list-item>
-    <mat-list-item *ngFor="let data of user | paginate: {  itemsPerPage: 10, currentPage: p }">
-      <h3 matLine>
+    <mat-list-item *ngFor="let data of user | paginate: {  itemsPerPage: 5, currentPage: p }">
+      <p matLine>
         <label>Repository name</label>
         <a target="_blank" href={{data.node.url}}>
           {{data.node.name}}
         </a>
-      </h3>
+      </p>
       <p matLine>
         <label>Is it a Fork?</label>
         {{data.node.isFork}}
@@ -32,6 +32,10 @@
       </p>
     </mat-list-item>
   </mat-list>
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
-
+</div>
+<div class="pagination">
+  <pagination-controls (pageChange)="p = $event" maxSize="5" directionLinks="true" autoHide="true" responsive="true"
+    previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+    screenReaderCurrentLabel="You're on page">
+  </pagination-controls>
 </div>
