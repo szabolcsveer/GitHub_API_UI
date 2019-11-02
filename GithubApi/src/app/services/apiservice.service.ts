@@ -5,6 +5,8 @@ import { HttpLinkModule, HttpLink } from "apollo-angular-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloLink, concat } from 'apollo-link';
 import ApolloClient from 'apollo-client';
+import { onError } from 'apollo-link-error';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +16,22 @@ export class ApiserviceService {
     httpLink: HttpLink
   ) {
     const http = httpLink.create({ uri: 'https://api.github.com/graphql' });
+    
+    //Error Handling
+    const errorLink = onError(({ graphQLErrors, networkError, operation, response }) => {
+      if (graphQLErrors)
+        graphQLErrors.map(({ message, locations, path }) =>
+          console.log(
+            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+          ),
+        );
+    
+      if (networkError) console.log(`[Network error]: ${networkError}`);
+
+      if(operation) console.log(`Operation Error: ${operation}`)
+        
+      if(response) console.log(`Response Error: ${response}`);
+    });
 
     localStorage.setItem('Authorization' ,'47c127c39c9040b7515742088fddae6613bdb5a2' )
     const token = '47c127c39c9040b7515742088fddae6613bdb5a2';
@@ -25,8 +43,14 @@ export class ApiserviceService {
       return forward(operation);
     });
 
+
+    const httpLinkWithErrorHandling = ApolloLink.from([
+      errorLink,
+      concat(authMiddleware, http),
+   ]);
+
     apollo.create({
-      link: concat(authMiddleware, http),
+      link: httpLinkWithErrorHandling,
       cache: new InMemoryCache(),
     });
   }

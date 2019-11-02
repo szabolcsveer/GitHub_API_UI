@@ -10,7 +10,7 @@ import { all } from 'q';
 const CurrentUserForProfile = gql`
 query ($queryString: String!) {
   repositoryOwner(login: $queryString) {
-    repositories(first: 5) {
+    repositories(first: 10) {
       edges {
         node {
           name
@@ -60,25 +60,25 @@ export class InputfieldComponent implements OnInit {
   public userData: any;
   public error: any;
   constructor(private route: ActivatedRoute,
-              private router: Router,
-              private apollo: Apollo ) {
-   }
+    private router: Router,
+    private apollo: Apollo) {
+  }
 
   ngOnInit() {
     this.route.queryParamMap.subscribe(params => {
     });
     console.log(this.userData);
-    
+    console.log(this.error);
   }
-  
+
   onKey(event: KeyboardEvent) { // with type info
     this.user = (<HTMLInputElement>event.target).value;
   }
-  
+
   onClickMe(event) {
     this.user = event.target.value;
   }
-  
+
   goTo() {
     this.router.navigate(['/'], { queryParams: { user: this.user } });
     this.querySubscription = this.apollo.watchQuery<Response>({
@@ -89,9 +89,11 @@ export class InputfieldComponent implements OnInit {
       }
     }).valueChanges
       .subscribe((result) => {
-      this.userData = result.data.repositoryOwner.repositories.edges
-      console.log(result.data.repositoryOwner.repositories);
-      this.error = result.errors
+        if (result.data.repositoryOwner === null) {
+          alert('No such user')
+        } else {
+          this.userData = result.data.repositoryOwner.repositories.edges
+        }
       });
   }
 

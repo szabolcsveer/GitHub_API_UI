@@ -15,7 +15,9 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 //Angular Material
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { PageEvent } from '@angular/material/paginator';
 
 //Components
 import { InputfieldComponent } from './components/inputfield/inputfield.component';
@@ -43,6 +45,7 @@ import { ApolloLink } from 'apollo-link';
     ApolloModule,
     HttpLinkModule,
     MatListModule,
+    MatPaginatorModule,
   ],
   bootstrap: [AppComponent],
   providers: [InputfieldComponent]

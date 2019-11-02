@@ -2,29 +2,38 @@
   <mat-list>
     <mat-list-item>
       {{error}}
-    </mat-list-item> 
-    <mat-list-item *ngFor="let data of user">
+    </mat-list-item>
+    <mat-list-item (ngModelChange)="setPageSizeOptions($event)" *ngFor="let data of user">
       <h3 matLine>
-        Repository name: 
+        <label>Repository name</label>
         <a target="_blank" href={{data.node.url}}>
-         {{data.node.name}}
+          {{data.node.name}}
         </a>
       </h3>
       <p matLine>
+        <label>Is it a Fork?</label>
         {{data.node.isFork}}
       </p>
       <p matLine>
+        <label>Pull Request Count</label>
         {{data.node.pullRequests.totalCount}}
       </p>
       <p matLine>
+        <label>Short description</label>
         {{data.node.shortDescriptionHTML}}
       </p>
       <p matLine>
+        <label>Issues Count</label>
         {{data.node.issues.totalCount}}
       </p>
       <p matLine>
+        <label>Date of last commit</label>
         {{data.node.defaultBranchRef.target.committedDate}}
       </p>
     </mat-list-item>
   </mat-list>
+
+  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+    (page)="pageEvent = $event">
+  </mat-paginator>
 </div>
