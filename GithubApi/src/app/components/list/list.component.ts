@@ -9,7 +9,7 @@ import { ApiserviceService } from '../../services/apiservice.service';
 import { InputfieldComponent } from '../inputfield/inputfield.component'
 import { Router, ActivatedRoute } from '@angular/router';
 import { __values } from 'tslib';
-import { PageEvent } from '@angular/material/paginator';
+
 // import { GraphQLModule } from '../../graphql.module';
 const CurrentUserForProfile = gql`
 query{
@@ -31,14 +31,7 @@ export class ListComponent implements OnInit {
   @Input() user: string
   @Input() error: string
   querySubscription: Subscription;
-
-    // MatPaginator Inputs
-    length = 100;
-    pageSize = 10;
-    pageSizeOptions: number[] = [5, 10, 25, 100];
-  
-    // MatPaginator Output
-    pageEvent: PageEvent;
+  p: number = 1;
   constructor(private apollo: Apollo,
     private inputfield: InputfieldComponent,
     private apiservice: ApiserviceService,
@@ -59,7 +52,4 @@ export class ListComponent implements OnInit {
     this.inputfield.userData = this.user
   }
 
-  setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
-  }
 }

@@ -10,7 +10,7 @@ import { all } from 'q';
 const CurrentUserForProfile = gql`
 query ($queryString: String!) {
   repositoryOwner(login: $queryString) {
-    repositories(first: 10) {
+    repositories(first: 100) {
       edges {
         node {
           name
@@ -100,4 +100,6 @@ export class InputfieldComponent implements OnInit {
   ngOnDestroy() {
     this.querySubscription.unsubscribe();
   }
+
+  
 }

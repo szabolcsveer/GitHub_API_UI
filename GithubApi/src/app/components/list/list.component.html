@@ -3,7 +3,7 @@
     <mat-list-item>
       {{error}}
     </mat-list-item>
-    <mat-list-item (ngModelChange)="setPageSizeOptions($event)" *ngFor="let data of user">
+    <mat-list-item *ngFor="let data of user | paginate: {  itemsPerPage: 10, currentPage: p }">
       <h3 matLine>
         <label>Repository name</label>
         <a target="_blank" href={{data.node.url}}>
@@ -32,8 +32,6 @@
       </p>
     </mat-list-item>
   </mat-list>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
-  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-    (page)="pageEvent = $event">
-  </mat-paginator>
 </div>

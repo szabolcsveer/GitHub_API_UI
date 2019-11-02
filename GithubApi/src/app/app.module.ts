@@ -16,14 +16,14 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import { PageEvent } from '@angular/material/paginator';
 
 //Components
 import { InputfieldComponent } from './components/inputfield/inputfield.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ListComponent } from './components/list/list.component';
 import { ApolloLink } from 'apollo-link';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 // import { GraphQLModule } from './graphql.module';
 
 @NgModule({
@@ -45,7 +45,11 @@ import { ApolloLink } from 'apollo-link';
     ApolloModule,
     HttpLinkModule,
     MatListModule,
-    MatPaginatorModule,
+    NgxPaginationModule
+  ],
+  exports:[
+    NgxPaginationModule,
+    ListComponent
   ],
   bootstrap: [AppComponent],
   providers: [InputfieldComponent]
