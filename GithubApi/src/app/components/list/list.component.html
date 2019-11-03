@@ -1,46 +1,43 @@
 <div class="list-items-main">
-  <mat-list>
-    <mat-list-item *ngFor="let data of user | paginate: {  itemsPerPage: 4, currentPage: p }">
-      <div class="items">
-        <label>Repository name</label>
-        <p matLine>
-          <a target="_blank" href={{data.node.url}}>
-            {{data.node.name}}
-          </a>
-        </p>
-      </div>
-      <div class="items">
-        <label>Is it a Fork?</label>
-        <p matLine>
-          {{data.node.isFork}}
-        </p>
-      </div>
-      <div class="items">
-        <label>Pull Request Count</label>
-        <p matLine>
-            {{data.node.pullRequests.totalCount}}
-        </p>
-      </div>
-      <div class="items">
-        <label>Short description</label>
-        <p matLine>
-            {{data.node.shortDescriptionHTML}}
-        </p>
-      </div>
-      <div class="items">
-        <label>Issues Count</label>
-        <p matLine>
-            {{data.node.issues.totalCount}}
-        </p>
-      </div>
-      <div class="items">
-        <label>Date of last commit</label>
-        <p matLine>
-            {{data.node.defaultBranchRef.target.committedDate}}
-        </p>
-      </div>
-    </mat-list-item>
-  </mat-list>
+  <table>
+    <tr class="table-header">
+      <th><label>Repository name</label>
+      </th>
+      <th><label>Is it a Fork?</label>
+      </th>
+      <th><label>Pull Request Count</label>
+      </th>
+      <th><label>Short description</label>
+      </th>
+      <th><label>Issues Count</label>
+      </th>
+      <th><label>Date of last commit</label>
+      </th>
+    </tr>
+    <tr class="table-datas" *ngFor="let data of user | paginate: {  itemsPerPage: 15, currentPage: p }">
+      <td>
+        <a href="{{data.node.url}}">
+          {{data.node.name}}
+        </a>
+      </td>
+      <td>
+        {{data.node.isFork}}
+      </td>
+      <td>
+        {{data.node.pullRequests.totalCount}}
+      </td>
+      <td>
+        {{data.node.shortDescriptionHTML}}
+      </td>
+      <td>
+        {{data.node.issues.totalCount}}
+      </td>
+      <td>
+        {{data.node.defaultBranchRef.target.committedDate}}
+      </td>
+    </tr>
+    <tr></tr>
+  </table>
 </div>
 <div class="pagination">
   <pagination-controls (pageChange)="p = $event" maxSize="5" directionLinks="true" autoHide="true" responsive="true"

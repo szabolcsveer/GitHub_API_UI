@@ -1,42 +1,21 @@
-mat-list mat-list-item{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-mat-list mat-list-item p {
-  display: flex;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 18px;
-
-}
-mat-list mat-list-item p label {
-  font-size: 20px;
-  font-weight: 400;
-  position: absolute;
-}
-
-mat-list a{
-text-decoration: none;
-margin: 0;
-}
-
-.items{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 12rem;
-  padding: auto;
-  margin: auto;
-}
-
-.items p {
-  display:inline;
-  margin-right:30px;
-}
-
 .pagination{
   position:absolute;
   bottom:0;
   right:0;
 }
+
+table {
+  table-layout: fixed;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 18px;
+}
+
+.table-header th label{
+  margin-right: 5rem;
+}
+a {
+  text-decoration: none;
+}
+
+
+
