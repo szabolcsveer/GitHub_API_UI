@@ -1,34 +1,44 @@
-<div class="list-items">
+<div class="list-items-main">
   <mat-list>
     <mat-list-item *ngFor="let data of user | paginate: {  itemsPerPage: 4, currentPage: p }">
-      <p matLine>
+      <div class="items">
         <label>Repository name</label>
-        <a target="_blank" href={{data.node.url}}>
-          {{data.node.name}}
-        </a>
-      </p>
-      <p matLine>
+        <p matLine>
+          <a target="_blank" href={{data.node.url}}>
+            {{data.node.name}}
+          </a>
+        </p>
+      </div>
+      <div class="items">
         <label>Is it a Fork?</label>
-        <span>
+        <p matLine>
           {{data.node.isFork}}
-        </span>
-      </p>
-      <p matLine>
+        </p>
+      </div>
+      <div class="items">
         <label>Pull Request Count</label>
-        {{data.node.pullRequests.totalCount}}
-      </p>
-      <p matLine>
+        <p matLine>
+            {{data.node.pullRequests.totalCount}}
+        </p>
+      </div>
+      <div class="items">
         <label>Short description</label>
-        {{data.node.shortDescriptionHTML}}
-      </p>
-      <p matLine>
+        <p matLine>
+            {{data.node.shortDescriptionHTML}}
+        </p>
+      </div>
+      <div class="items">
         <label>Issues Count</label>
-        {{data.node.issues.totalCount}}
-      </p>
-      <p matLine>
+        <p matLine>
+            {{data.node.issues.totalCount}}
+        </p>
+      </div>
+      <div class="items">
         <label>Date of last commit</label>
-        {{data.node.defaultBranchRef.target.committedDate}}
-      </p>
+        <p matLine>
+            {{data.node.defaultBranchRef.target.committedDate}}
+        </p>
+      </div>
     </mat-list-item>
   </mat-list>
 </div>

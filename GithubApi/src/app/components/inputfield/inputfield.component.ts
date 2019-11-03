@@ -67,8 +67,6 @@ export class InputfieldComponent implements OnInit {
   ngOnInit() {
     this.route.queryParamMap.subscribe(params => {
     });
-    console.log(this.userData);
-    console.log(this.error);
   }
 
   onKey(event: KeyboardEvent) { // with type info
