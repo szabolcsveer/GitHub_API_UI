@@ -1,9 +1,6 @@
 <div class="list-items">
   <mat-list>
-    <mat-list-item>
-      {{error}}
-    </mat-list-item>
-    <mat-list-item *ngFor="let data of user | paginate: {  itemsPerPage: 5, currentPage: p }">
+    <mat-list-item *ngFor="let data of user | paginate: {  itemsPerPage: 4, currentPage: p }">
       <p matLine>
         <label>Repository name</label>
         <a target="_blank" href={{data.node.url}}>
@@ -12,7 +9,9 @@
       </p>
       <p matLine>
         <label>Is it a Fork?</label>
-        {{data.node.isFork}}
+        <span>
+          {{data.node.isFork}}
+        </span>
       </p>
       <p matLine>
         <label>Pull Request Count</label>

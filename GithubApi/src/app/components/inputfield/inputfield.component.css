@@ -7,10 +7,12 @@
 }
 
  
-.frame{
+/* .frame{
   display: flex;
   justify-content: flex-start;
-}
+} */
+
+
 
 mat-form-field {
   width: 14rem;
@@ -26,3 +28,4 @@ button {
 h1 {
   margin: 10px;
 }
+

@@ -4,15 +4,25 @@ mat-list-item{
   justify-content: center;
 }
 
-mat-list-item p {
+mat-list mat-list-item p {
   padding: 2px 2px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 24px;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+}
+mat-list mat-list-item p label {
+  font-size: 22px;
+  font-weight: 400;
 }
 
 mat-list a{
 text-decoration: none;
 margin: 0;
+}
+
+.list-items {
+  top: 0;
 }
 
 .pagination{

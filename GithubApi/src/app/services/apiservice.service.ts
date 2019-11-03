@@ -33,8 +33,8 @@ export class ApiserviceService {
       if(response) console.log(`Response Error: ${response}`);
     });
 
-    localStorage.setItem('Authorization' ,'47c127c39c9040b7515742088fddae6613bdb5a2' )
-    const token = '47c127c39c9040b7515742088fddae6613bdb5a2';
+    localStorage.setItem('Authorization' ,'f037f30e42a7f1f705d1c1530ccacdb0ca45e2e0' )
+    const token = 'f037f30e42a7f1f705d1c1530ccacdb0ca45e2e0';
     const authMiddleware = new ApolloLink((operation, forward) => {
       // add the authorization to the headers
       operation.setContext({
