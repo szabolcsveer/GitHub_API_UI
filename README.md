@@ -10,7 +10,7 @@ STEP 1:\
 Make sure you have Node.js and Angular installed on your system.\
 Install Angular CLI by using: npm install -g @angular/cli \
 command in your terminal.\
-Please follow the guide below for help: https://angular.io/guide/setup-local\
+Please follow the guide below for help: https://angular.io/guide/setup-local
 
 /B\
 In order to use the app, you must generate a \
