@@ -11,8 +11,9 @@ table {
 }
 
 .table-header th label{
-  margin-right: 5rem;
+  padding: 2px;
 }
+
 a {
   text-decoration: none;
 }
